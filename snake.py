@@ -1,3 +1,8 @@
+'''Ваша задача написать код анимации квадрата, который перемещается от
+левой границе к правой, касается ее, но не исчезает за ней. После этого
+возвращается назад – от правой границы к левой, касается ее, опять двигается
+вправо. Циклы движения квадрата повторяются до завершения программы.'''
+
 import pygame as pg
 import sys
 
@@ -10,7 +15,8 @@ clock = pg.time.Clock()
 sc = pg.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
 pg.display.set_caption('aaa')
 
-r = 30
+w_rect = 50
+h_rect = 50
 x = WIN_WIDTH // 2
 y = WIN_HEIGHT // 2
 
@@ -19,13 +25,17 @@ while True:
         if i.type == pg.QUIT or (i.type == pg.KEYDOWN and i.key == pg.K_ESCAPE):
             pg.quit()
             sys.exit()
+        elif i.type == pg.KEYDOWN:
+            if i.key == pg.K_LEFT:
+                x -= 10
+            elif i.key == pg.K_RIGHT:
+                x += 10
+            elif i.key == pg.K_UP:
+                y -= 10
+            elif i.key == pg.K_DOWN:
+                y += 10
     sc.fill(BLACK)
-    pg.draw.circle(sc, ORANGE, (x, y), r)
+    pg.draw.rect(sc, ORANGE, (x, y, w_rect, h_rect))
     pg.display.update()
-
-    if x >= WIN_WIDTH + r:
-        x = 0 - r
-    else:
-        x += 2
 
     clock.tick(60)

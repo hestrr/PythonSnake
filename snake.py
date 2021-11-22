@@ -13,6 +13,8 @@ y = 30
 clock = pg.time.Clock()
 matrix = Matrix(x, y)
 matrix.showPoint(x, y)
+x_old = x
+y_old = y
 
 while True:
     for i in pg.event.get():
@@ -28,5 +30,8 @@ while True:
                 y -= 1
             elif i.key == pg.K_DOWN:
                 y += 1
+            matrix.hidePoint(x_old, y_old)
             matrix.showPoint(x, y)
+            x_old = x
+            y_old = y
     clock.tick(60)

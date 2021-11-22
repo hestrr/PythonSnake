@@ -15,15 +15,12 @@ class Matrix:
         self.w_rect = 50
         self.h_rect = 50
 
-        self.x_old = x
-        self.y_old = y
-
     def showPoint(self, x, y):
-        # self.sc.fill(self.BLACK)
-        pg.draw.rect(self.sc, self.BLACK,
-                     (self.x_old*10, self.y_old*10, self.w_rect, self.h_rect))
         pg.draw.rect(self.sc, self.ORANGE,
                      (x*10, y*10, self.w_rect, self.h_rect))
-        self.x_old = x
-        self.y_old = y
+        pg.display.update()
+
+    def hidePoint(self, x, y):
+        pg.draw.rect(self.sc, self.BLACK,
+                     (x*10, y*10, self.w_rect, self.h_rect))
         pg.display.update()

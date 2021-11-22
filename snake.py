@@ -6,15 +6,14 @@
 import pygame as pg
 import sys
 from matrix import Matrix
+from dot import Dot
 
 pg.init()
-x = 40
-y = 30
 clock = pg.time.Clock()
-matrix = Matrix(x, y)
-matrix.showPoint(x, y)
-x_old = x
-y_old = y
+matrix = Matrix()
+dot = Dot(matrix, 40, 30)
+clock.tick(60)
+
 
 while True:
     for i in pg.event.get():
@@ -23,15 +22,10 @@ while True:
             sys.exit()
         elif i.type == pg.KEYDOWN:
             if i.key == pg.K_LEFT:
-                x -= 1
+                dot.left()
             elif i.key == pg.K_RIGHT:
-                x += 1
+                dot.right()
             elif i.key == pg.K_UP:
-                y -= 1
+                dot.up()
             elif i.key == pg.K_DOWN:
-                y += 1
-            matrix.hidePoint(x_old, y_old)
-            matrix.showPoint(x, y)
-            x_old = x
-            y_old = y
-    clock.tick(60)
+                dot.down()

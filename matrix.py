@@ -1,9 +1,8 @@
 import pygame as pg
-import time
 
 
 class Matrix:
-    def __init__(self, x, y):
+    def __init__(self):
         pg.init()
         WIN_WIDTH = 600
         WIN_HEIGHT = 400

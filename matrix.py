@@ -4,12 +4,15 @@ import pygame as pg
 class Matrix:
     def __init__(self, headerText):
         pg.init()
-        WIN_WIDTH = 600
-        WIN_HEIGHT = 400
+        WIN_WIDTH = 800
+        WIN_HEIGHT = 420
         self.ORANGE = (255, 150, 100)
         self.BLACK = (0, 0, 0)
         self.WHITE = (255, 255, 255)
         self.sc = pg.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
+        pg.draw.rect(self.sc, self.WHITE,
+                     (95, 5, WIN_WIDTH-190, WIN_HEIGHT-10), 10)
+        pg.display.update()
         pg.display.set_caption(headerText)
 
         self.w_rect = 50
@@ -18,12 +21,12 @@ class Matrix:
 
     def showPoint(self, x, y):
         pg.draw.rect(self.sc, self.ORANGE,
-                     (x*self.quotient, y*self.quotient, self.w_rect, self.h_rect))
+                     (x*self.quotient+100, y*self.quotient+10, self.w_rect, self.h_rect))
         pg.display.update()
 
     def hidePoint(self, x, y):
         pg.draw.rect(self.sc, self.BLACK,
-                     (x*self.quotient, y*self.quotient, self.w_rect, self.h_rect))
+                     (x*self.quotient+100, y*self.quotient+10, self.w_rect, self.h_rect))
         pg.display.update()
 
     '''def showSnake(self, x, y, length):

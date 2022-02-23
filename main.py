@@ -1,12 +1,12 @@
-import pygame as pg
 import sys
+import pygame as pg
 from matrix import Matrix
 from dot import Dot
-from snake import Snake
+#from snake import Snake
 
 pg.init()
 clock = pg.time.Clock()
-matrix = Matrix()
+matrix = Matrix('Точка')
 dot = Dot(matrix, 40, 30)
 clock.tick(60)
 

@@ -2,7 +2,7 @@ import pygame as pg
 
 
 class Matrix:
-    def __init__(self):
+    def __init__(self, headerText):
         pg.init()
         WIN_WIDTH = 600
         WIN_HEIGHT = 400
@@ -10,23 +10,24 @@ class Matrix:
         self.BLACK = (0, 0, 0)
         self.WHITE = (255, 255, 255)
         self.sc = pg.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
-        pg.display.set_caption('aaa')
+        pg.display.set_caption(headerText)
 
         self.w_rect = 50
         self.h_rect = 50
+        self.quotient = 10
 
     def showPoint(self, x, y):
         pg.draw.rect(self.sc, self.ORANGE,
-                     (x*10, y*10, self.w_rect, self.h_rect))
+                     (x*self.quotient, y*self.quotient, self.w_rect, self.h_rect))
         pg.display.update()
 
     def hidePoint(self, x, y):
         pg.draw.rect(self.sc, self.BLACK,
-                     (x*10, y*10, self.w_rect, self.h_rect))
+                     (x*self.quotient, y*self.quotient, self.w_rect, self.h_rect))
         pg.display.update()
 
-    def showSnake(self, x, y, length):
+    '''def showSnake(self, x, y, length):
         for i in range(0, length):
             pg.draw.rect(self.sc, self.WHITE,
-                         (x*10, y*10, self.w_rect, self.h_rect))
-            x += 1
+                         (x*self.quotient, y*self.quotient, self.w_rect, self.h_rect))
+            x += 1'''

@@ -7,7 +7,7 @@ from dot import Dot
 pg.init()
 clock = pg.time.Clock()
 matrix = Matrix('Точка')
-dot = Dot(matrix, 40, 30)
+dot = Dot(matrix, 1, 1, 60, 40)
 clock.tick(60)
 
 

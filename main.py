@@ -8,8 +8,13 @@ pg.init()
 clock = pg.time.Clock()
 matrix = Matrix('Точка')
 dot = Dot(matrix, 1, 1, 60, 40)
-clock.tick(60)
 
+RIGHT = "right"
+LEFT = "left"
+UP = 'up'
+DOWN = 'down'
+STOP = "stop"
+motion = STOP
 
 while True:
     for i in pg.event.get():
@@ -18,10 +23,24 @@ while True:
             sys.exit()
         elif i.type == pg.KEYDOWN:
             if i.key == pg.K_LEFT:
-                dot.left()
+                motion = LEFT
             elif i.key == pg.K_RIGHT:
-                dot.right()
+                motion = RIGHT
             elif i.key == pg.K_UP:
-                dot.up()
+                motion = UP
             elif i.key == pg.K_DOWN:
-                dot.down()
+                motion = DOWN
+        elif i.type == pg.KEYUP:
+            if i.key in [pg.K_LEFT, pg.K_RIGHT, pg.K_UP, pg.K_DOWN]:
+                motion = STOP
+
+    if motion == LEFT:
+        dot.left()
+    elif motion == RIGHT:
+        dot.right()
+    elif motion == UP:
+        dot.up()
+    elif motion == DOWN:
+        dot.down()
+
+    clock.tick(60)

@@ -2,12 +2,13 @@ import sys
 import pygame as pg
 from matrix import Matrix
 from dot import Dot
+from time import sleep
 #from snake import Snake
 
 pg.init()
 clock = pg.time.Clock()
-matrix = Matrix('Точка')
-dot = Dot(matrix, 60, 40)
+matrix = Matrix('Точка', 70, 50)
+dot = Dot(matrix, 70, 50)
 
 RIGHT = "right"
 LEFT = "left"
@@ -36,11 +37,15 @@ while True:
 
     if motion == LEFT:
         dot.left()
+        sleep(0.05)
     elif motion == RIGHT:
         dot.right()
+        sleep(0.05)
     elif motion == UP:
         dot.up()
+        sleep(0.05)
     elif motion == DOWN:
         dot.down()
+        sleep(0.05)
 
     clock.tick(60)

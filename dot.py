@@ -1,12 +1,11 @@
 class Dot:
-    def __init__(self, matrix, x_start, y_start, size_x, size_y):
-        matrix.showPoint(x_start, y_start)
-
+    def __init__(self, matrix, size_x, size_y):
         self.matrix = matrix
-        self.x = self.x_old = x_start
-        self.y = self.y_old = y_start
         self.size_x = size_x
         self.size_y = size_y
+        self.x = self.x_old = size_x//2
+        self.y = self.y_old = size_y//2
+        matrix.showPoint(self.x, self.y)
 
     def left(self):
         if self.x == 0:
